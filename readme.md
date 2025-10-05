@@ -44,7 +44,7 @@ This project recreates that workflow on a smaller scale:
 
 ## 📂 Project Structure
 
-📦 YTview/ │ ├── gateway.py           # FastAPI app (Kafka producer) ├── consumer.py          # Kafka consumer + DB aggregator ├── client_simulator.py  # Simulates random video views ├── dashboard.py         # Streamlit dashboard ├── requirements.txt     # Python dependencies └── README.md
+📦 YTview/ │ ├── server.py           # FastAPI app (Kafka producer) ├── consumer.py          # Kafka consumer + DB aggregator ├── client.py  # Simulates random video views ├── monitor.py         # Streamlit dashboard ├── requirements.txt     # Python dependencies └── README.md
 
 ---
 
@@ -104,7 +104,7 @@ kafka-topics.sh --create --topic views --bootstrap-server localhost:9092 --parti
 
 Step 1: Start the FastAPI Gateway
 
-uvicorn gateway:app --reload --port 8000
+uvicorn server:app --reload --port 8000
 
 Step 2: Start the Kafka Consumer
 
@@ -112,11 +112,11 @@ python consumer.py
 
 Step 3: Start the Client Traffic Simulator
 
-python client_simulator.py
+python client.py
 
 Step 4: Start the Streamlit Dashboard
 
-streamlit run dashboard.py
+streamlit run monitor.py
 
 
 ---
